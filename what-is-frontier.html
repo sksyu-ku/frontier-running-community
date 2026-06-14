@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is FRONTIER</title>
+    <meta name="description" content="About our passion and vision. Learn what drives the Frontier community.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap" rel="stylesheet">
+    <style>
+        .content-body { padding: 80px 40px; }
+        .purpose-page-text { color: #333; text-align: left; max-width: 750px; margin: 0 auto; line-height: 2.0; }
+        .purpose-page-text p { 
+            margin-bottom: 45px; 
+            font-size: 18px; 
+            font-weight: 500; 
+        }
+        .purpose-page-text strong { color: var(--primary-navy); font-size: 1.2em; display: block; margin-bottom: 10px; }
+        .purpose-page-text small { color: #00b5e2; font-size: 14px; font-weight: 700; display: block; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .back-nav { margin-top: 60px; border-top: 1px solid #eee; padding-top: 30px; }
+
+        /* 共通CSSの待機時間(2.5s〜)を上書きして、ページ表示後すぐに出現させる */
+        header .brand-tag { animation-delay: 0.1s; }
+        header h1 { animation-delay: 0.2s; }
+        header .subtitle { animation-delay: 0.3s; }
+
+        /* 言語切り替えボタンのスタイル */
+        .lang-switch { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; }
+        .lang-btn { 
+            padding: 8px 20px; border: 2px solid #041e42; background: transparent; 
+            color: #041e42; font-family: 'Montserrat', sans-serif; font-weight: 800; 
+            cursor: pointer; border-radius: 25px; transition: 0.3s; font-size: 13px;
+        }
+        .lang-btn.active { background: #041e42; color: white; }
+
+        /* 表示制御ロジック */
+        .content-body[data-lang="ja"] .lang-en { display: none; }
+        .content-body[data-lang="en"] .lang-ja { display: none; }
+        .content-body[data-lang="en"] .lang-en small { 
+            font-size: 18px; color: #333; margin-top: 0; line-height: 1.8; text-transform: none;
+        }
+        /* BOTHの場合は既存のスタイル（対訳形式）を維持 */
+        .content-body[data-lang="both"] .lang-en br { display: block; }
+        .content-body[data-lang="ja"] br, .content-body[data-lang="en"] br { display: none; }
+    </style>
+</head>
+<body>
+    <header style="background-image: linear-gradient(rgba(4, 30, 66, 0.6), rgba(4, 30, 66, 0.6)), url('S__71516164_0.jpg'); animation: none;">
+        <div class="brand-tag">frntr_kansai</div>
+        <h1>FRONTIER-running community-</h1>
+        <p class="subtitle">Our Passion & Vision</p>
+    </header>
+
+    <div class="container content-body">
+        <!-- 言語切り替えトグル -->
+        <div class="lang-switch reveal">
+            <button class="lang-btn" data-lang-set="ja" onclick="setLanguage('ja')">JA</button>
+            <button class="lang-btn" data-lang-set="en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn active" data-lang-set="both" onclick="setLanguage('both')">JA / EN</button>
+        </div>
+
+        <div id="text-content" class="purpose-page-text reveal">
+            <p>
+                <span class="lang-ja">国境を越えた情熱が交差する最前線、それが「FRONTIER」です。</span>
+                <span class="lang-en"><br><small>Frontier is the forefront where passions meet.</small></span>
+            </p>
+            
+            <p>
+                <span class="lang-ja">「運動することで得れる心地の良い達成感を同世代とシェアしたい。そこから生まれる繋がりを大切にしたい」<br>
+
+                そんな純粋な衝動をカタチにするために、この場所を立ち上げました。</span>
+                <span class="lang-en"><br><small>“I want to share the pleasant sense of accomplishment from exercising with my peers, and treasure the bonds born from that.” I established this place to give shape to that pure impulse.</small></span>
+            </p>
+            
+            <p>
+                <span class="lang-ja"><strong> 国境と常識を越え、まだ見ぬ“自分”と出会う</strong>
+                ここは、様々な国籍やバックグラウンドを持つ人々が集う場所。言語の壁も、既存の枠も飛び越えて、誰も見たことのない新しい自分に出会うためのコミュニティです。ローカルとグローバルが混ざり合う刺激的な環境が、あなたの視野を大きく広げます。</span>
+                <span class="lang-en"><br><small>This is a place where people of various nationalities and backgrounds gather. A community where you can jump over language barriers and existing frameworks to meet a new version of yourself. The exciting environment where local and global perspectives mix will greatly expand your horizons.</small></span>
+            </p>
+            
+            <p>
+                <span class="lang-ja"><strong>🏃‍♂️ ただの走る集まりじゃない。人生を面白くする舞台</strong><br>
+                「走る」という世界共通の言語を通じて、日常に心地よいリズムを刻み、内なる衝動を迷わず「行動」へと変えていきます。一人では辿り着けない場所も、ここで出会い、互いを鼓舞し合う多種多様な仲間と一緒なら越えていける。</span>
+                <span class="lang-en"><br><small>Through the universal language of "running," we carve a comfortable rhythm into daily life and turn inner impulses into "action" without hesitation. Destinations you can't reach alone can be surpassed together with a diverse group of friends who inspire each other.</small></span>
+            </p>
+
+            <p>
+                <span class="lang-ja">一歩踏み出すその「癖」が、あなたの人生をより面白く、豊かなものに変えていく。<br>
+                そのための舞台は、僕が作ります。あとは、あなたがそこに飛び込むだけです。</span>
+                <span class="lang-en"><br><small>The "habit" of taking a step forward will transform your life into something more interesting and rich. I will build the stage. All you have to do is dive in.</small></span>
+            </p>
+            
+            <p style="font-size: 24px; font-weight: 800; color: #00b5e2; text-align: center; margin: 50px 0;">"Change your habit, Change your life."</p>
+            
+            <p>
+                <span class="lang-ja">レベルも、国籍も問いません。必要なのは、飛び込む勇気だけ。<br>
+                まずは最初の一歩を。共に熱狂をつくり出そう🔥</span>
+                <span class="lang-en"><br><small>No skill level or nationality required. All you need is the courage to dive in. Take the first step. Let's create enthusiasm together🔥</small></span>
+            </p>
+        </div>
+
+        <div class="back-nav" style="text-align: center;">
+            <a href="index.html" class="btn">View Schedule</a>
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 言語切り替えロジック
+        function setLanguage(lang) {
+            const contentBody = document.querySelector('.content-body');
+            contentBody.setAttribute('data-lang', lang);
+            
+            // ボタンの活性状態を更新
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang-set') === lang);
+            });
+
+            // 設定を保存
+            localStorage.setItem('frontier_lang', lang);
+        }
+
+        // 初期読み込み時に保存された設定を適用
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('frontier_lang') || 'both';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

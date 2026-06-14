@@ -1,0 +1,409 @@
+:root {
+    --primary-navy: #041e42;
+    --accent-blue: #00b5e2;
+    --bg-light: #f8f9fa;
+    --text-dark: #333;
+    --transition-speed: 0.6s;
+}
+
+body {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', "Meiryo", sans-serif;
+    font-display: swap;
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a; /* 視認性を高めた深めのネイビー */
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+header {
+    background-color: var(--primary-navy);
+    background-image: linear-gradient(rgba(4, 30, 66, 0.4), rgba(4, 30, 66, 0.4)), url('S__71516164_0.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 160px 20px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(rgba(4, 30, 66, 0.4), rgba(4, 30, 66, 0.4)), url('S__71712775.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    opacity: 0;
+    animation: headerFade 12s infinite;
+}
+
+@keyframes headerFade {
+    0%, 45% { opacity: 0; }
+    55%, 90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+header::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-blue);
+    margin: 30px auto 0;
+    border-radius: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Entrance Animations */
+header .brand-tag, header h1, header .subtitle, header .header-controls {
+    animation: fadeDown 1s ease-out forwards;
+    opacity: 0;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+    pointer-events: none; /* アニメーション完了までクリック不可 */
+}
+/* カーテンが上がる2.2s〜3.0sに合わせて開始 */
+header .brand-tag { animation-delay: 2.5s; }
+header h1 { animation-delay: 2.7s; }
+header .subtitle { animation-delay: 2.9s; }
+header .header-controls { animation-delay: 3.1s; }
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); pointer-events: auto; }
+}
+.brand-tag { font-size: 16px; font-weight: 800; color: var(--accent-blue); letter-spacing: 3px; margin-bottom: 10px; }
+h1 { margin: 0; font-size: clamp(32px, 8vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.0; }
+.subtitle { font-size: 18px; margin-top: 20px; opacity: 0.9; font-weight: 500; line-height: 1.5; text-transform: none; letter-spacing: 0.05em; }
+
+.header-controls {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+.info-toggle {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.info-toggle:hover { background: white; color: var(--primary-navy); transform: scale(1.05); }
+
+.section-title {
+    color: var(--primary-navy);
+    font-size: 28px;
+    margin-bottom: 40px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.container {
+    max-width: 900px;
+    margin: -60px auto 80px;
+    /* 単なる白から、清潔感のある非常に薄い青のグラデーションへ */
+    background: linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
+    padding: 60px 40px;
+    border-radius: 16px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 10;
+}
+
+.event-date-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: white; /* カード本体を純白にして浮かび上がらせる */
+    border: 1px solid rgba(0, 181, 226, 0.05);
+    border-left: 6px solid transparent; /* ホバー時のアクセント用 */
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+.event-date-section:hover {
+    transform: translateX(10px) translateY(-5px);
+    border-left-color: var(--accent-blue);
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.date-badge {
+    min-width: 90px;
+    padding: 15px 10px;
+    background: var(--bg-light);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary-navy);
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+.date-badge span {
+    display: block;
+    font-size: 12px;
+    color: var(--accent-blue);
+    margin-top: 5px;
+}
+.event-date-section:hover .date-badge { background: var(--primary-navy); color: white; }
+
+.event-content { flex-grow: 1; }
+.event-content h3 { margin: 0; font-size: 20px; color: var(--primary-navy); display: flex; align-items: baseline; gap: 8px; }
+.event-content h3 small { font-size: 12px; color: #666; }
+.event-description { margin: 5px 0 10px; font-size: 15px; color: #444; }
+
+.event-image {
+    width: 150px;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.event-date-section:hover .event-image img { transform: scale(1.1); }
+
+/* Community Mood Carousel */
+.mood-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2); /* 少し背景を透かして馴染ませる */
+    padding: 40px 0;
+    margin: 40px 0 80px 0;
+    position: relative;
+}
+.carousel-track {
+    display: flex;
+    width: calc(300px * 8); /* 4枚 × 2セット */
+    animation: scroll 20s linear infinite;
+}
+.carousel-item {
+    width: 300px;
+    height: 200px;
+    flex-shrink: 0;
+    padding: 0 10px;
+}
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: grayscale(0.3);
+    transition: 0.3s;
+}
+.carousel-item img:hover { filter: grayscale(0); transform: scale(1.05); }
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-300px * 4)); }
+}
+
+/* Photo Grid System */
+.photo-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 50px;
+}
+.photo-item {
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.photo-item:hover img { transform: scale(1.08); }
+.photo-item.wide { grid-column: span 2; }
+
+.mid-page-image {
+    width: 100%;
+    border-radius: 12px;
+    margin: 40px 0;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.map-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s;
+}
+.map-link:hover { opacity: 0.7; text-decoration: underline; }
+
+.tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: #f0f0f0;
+    color: #666;
+    text-transform: uppercase;
+}
+.tag.coming { background: var(--primary-navy); color: white; }
+.tag.alert { background: #d0021b; color: white; }
+.tag.next { background: #2ecc71; color: white; margin-bottom: 8px; }
+.tag.finished { background: #95a5a6; color: white; margin-bottom: 8px; }
+
+.event-date-section.past-event {
+    opacity: 0.6;
+    filter: grayscale(0.8);
+}
+
+.event-date-section.night { background-color: #fcfcfc; }
+
+.status-tag {
+    display: inline-block;
+    background: var(--accent-blue);
+    color: white;
+    padding: 5px 15px;
+    font-weight: 800;
+    font-size: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.social-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+.social-section p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.social-section small { display: block; margin-top: 5px; color: #888; font-size: 12px; }
+.instagram-link {
+    color: #E1306C; /* Instagramのブランドカラー */
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+.instagram-link:hover {
+    transform: scale(1.05);
+}
+
+.btn {
+    display: inline-block;
+    min-width: 250px;
+    margin: 30px auto 0;
+    padding: 18px 30px;
+    background-color: var(--accent-blue);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 50px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+.btn:hover { background-color: #0094ba; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,181,226,0.4); }
+
+/* Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--transition-speed) ease-out, transform var(--transition-speed) ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .event-date-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .event-image {
+        width: 100%;
+        height: 180px;
+    }
+    .photo-feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* --- Opening Animation Styles --- */
+#intro-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-navy);
+    z-index: 10000; /* 全ての要素の上に配置 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: liftUp 0.8s cubic-bezier(0.85, 0, 0.15, 1) 2.2s forwards, 
+               hideIntro 0s forwards 3.0s;
+}
+@keyframes hideIntro {
+    to { pointer-events: none; visibility: hidden; }
+}
+#intro-logo {
+    color: white;
+    text-align: center;
+    opacity: 0;
+    animation: logoFade 1s ease-out 0.5s forwards;
+}
+.logo-main {
+    font-size: clamp(24px, 6vw, 42px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.logo-sub {
+    font-size: clamp(14px, 3vw, 18px);
+    font-weight: 500;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+@keyframes logoFade {
+    to { opacity: 1; transform: translateY(-5px); }
+}
+@keyframes liftUp {
+    to { transform: translateY(-100%); }
+}
